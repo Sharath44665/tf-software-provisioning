@@ -20,6 +20,8 @@ resource "aws_instance" "example" {
     ]
   }
 
+# this connection using ssh, so in our VPC enable SG inbound for remote IP
+# https://whatismyipaddress.com/
   connection {
     user="${var.INSTANCE_USERNAME}"
     private_key="${file("${var.PATH_TO_PRIVATE_KEY}")}"
