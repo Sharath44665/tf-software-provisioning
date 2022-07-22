@@ -11,6 +11,7 @@ resource "aws_instance" "example" {
   provisioner "file" {
     source="script.sh"
     destination = "/temp/script.sh"
+    
   }
 
   provisioner "remote-exec" {
@@ -23,8 +24,10 @@ resource "aws_instance" "example" {
 # this connection using ssh, so in our VPC enable SG inbound for remote IP 
 # for example 111.22.22.33/32 in SG
 # https://whatismyipaddress.com/
+
   connection {
     user="${var.INSTANCE_USERNAME}"
+    host = ""
     private_key="${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
 }
